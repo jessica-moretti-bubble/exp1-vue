@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "moduleResolution": "Node",
+      "strict": true,
+      "jsx": "preserve",
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "isolatedModules": true,
+      "resolveJsonModule": true,
+      "noEmit": true,
+      "types": ["vite/client"]
+    },
+    "include": ["src/**/*", "env.d.ts"]
+  }
+  

@@ -1,10 +1,8 @@
-<script setup>
-import { ref } from 'vue'
+<template>
+    <Form />
+</template>
 
-const x = ref('ciao')
+<script setup lang="ts">
+import Form from '@/components/Form/Form.vue'
 
 </script>
-
-<template>
-    <p>Backoffice</p>
-</template>

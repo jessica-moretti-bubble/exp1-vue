@@ -1,10 +1,3 @@
-<script setup lang="ts">
-import { useFetch } from '@vueuse/core'
-
-const apiUrl = import.meta.env.VITE_API_URL
-const { data, isFetching, error } = useFetch(`${apiUrl}/objects`).json()
-</script>
-
 <template>
     <h1>Products</h1>
 
@@ -26,3 +19,10 @@ const { data, isFetching, error } = useFetch(`${apiUrl}/objects`).json()
     gap: 1rem;
 }
 </style>
+
+<script setup lang="ts">
+import { useFetch } from '@vueuse/core'
+import ProductCard from '@/components/ProductCard/ProductCard.vue'
+const apiUrl = import.meta.env.VITE_API_URL
+const { data, isFetching, error } = useFetch(`${apiUrl}/objects`).json()
+</script>

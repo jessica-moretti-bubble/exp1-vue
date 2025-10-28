@@ -1,0 +1,62 @@
+.productForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 450px;
+  margin: 2rem auto;
+  background: #1c1c1e;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease;
+}
+
+.productForm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+.formTitle {
+  text-align: center;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.submitBtn {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  transform: translateY(-1px);
+}
+
+.submitBtn:active {
+  transform: translateY(1px);
+}
+
+.submitBtnDisabled,
+.submitBtn:disabled {
+  background: linear-gradient(90deg, #3a3a3c, #2c2c2e);
+  color: #a1a1aa;
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+@media (max-width: 480px) {
+  .productForm {
+    padding: 1.5rem;
+  }
+}

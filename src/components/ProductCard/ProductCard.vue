@@ -1,30 +1,3 @@
-<script setup lang="ts">
-import { useFetch } from '@vueuse/core'
-import ActionButton from '../ActionButton.vue'
-
-interface Product {
-    id: string
-    name: string
-    data?: Record<string, any> | null
-}
-
-const props = defineProps<{ item: Product }>()
-
-const handleRemove = async () => {
-    const apiUrl = import.meta.env.VITE_API_URL
-
-    const { error } = await useFetch(`${apiUrl}/objects/${props.item.id}`, {
-        method: 'DELETE',
-    })
-
-    if (error.value) {
-        console.error('Errore durante la DELETE:', error.value)
-    } else {
-        console.log(`✅ Prodotto "${props.item.name}" eliminato correttamente`)
-    }
-}
-</script>
-
 <template>
     <div class="product">
         <h3>{{ item.name }}</h3>
@@ -38,13 +11,44 @@ const handleRemove = async () => {
 
         <div class="buttonsContainer">
             <ActionButton title="Rimuovi" :action="handleRemove" type="remove" />
-            <ActionButton title="Visualizza" :action="handleRemove" type="view" />
+            <ActionButton title="Visualizza" :action="handleShowProduct" type="view" />
 
         </div>
 
 
     </div>
 </template>
+
+<script setup lang="ts">
+import { useFetch } from '@vueuse/core'
+import ActionButton from '../ActionButton.vue'
+import { useToast } from "vue-toastification";
+
+interface Product {
+    id: string
+    name: string
+    data?: Record<string, any> | null
+}
+
+const props = defineProps<{ item: Product }>()
+
+const toast = useToast();
+
+
+const handleRemove = async () => {
+    const apiUrl = import.meta.env.VITE_API_URL
+
+    const { error } = await useFetch(`${apiUrl}/objects/${props.item.id}`, {
+        method: 'DELETE',
+    })
+
+    if (error.value) {
+        toast.error("Errore durante l'eliminazione del prodotto")
+    } else {
+        toast.success("Prodotto eliminato correttamente")
+    }
+}
+</script>
 
 <style scoped>
 .product {

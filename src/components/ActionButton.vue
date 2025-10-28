@@ -1,13 +1,13 @@
 <script setup lang="ts">
 const props = defineProps<{
     title: string
-    type: 'remove' | 'add' | 'view'
+    type: 'remove' | 'view'
     action: () => void
 }>()
 </script>
 
 <template>
-    <button :class="['btn', type === 'remove' ? 'remove-btn' : 'add-btn']" @click="action">
+    <button :class="['btn', type === 'remove' ? 'remove-btn' : 'view-btn']" @click="action">
         {{ title }}
     </button>
 </template>
@@ -32,12 +32,12 @@ const props = defineProps<{
     transform: translateY(-1px);
 }
 
-.add-btn {
+.view-btn {
     background: #2ecc71;
     color: white;
 }
 
-.add-btn:hover {
+.view-btn:hover {
     background: #48e68b;
     transform: translateY(-1px);
 }
