@@ -1,0 +1,36 @@
+.nav {
+    background-color: #0a0a0a;
+    color: white;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 2%;
+  }
+  
+  .btn {
+    background: #1f1f1f;
+    text-decoration: none;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  
+  .btn:hover {
+    background: #2a2a2a;
+    transform: translateY(-1px);
+  }
+  
+  .active {
+    background: #329aff !important;
+    color: white !important;
+    box-shadow: 0 0 10px rgba(50, 154, 255, 0.6);
+    transform: translateY(-1px);
+  }
