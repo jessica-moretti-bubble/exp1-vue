@@ -11,7 +11,7 @@
 
         <div class="buttonsContainer">
             <ActionButton title="Rimuovi" :action="handleRemove" type="remove" />
-            <ActionButton title="Visualizza" :action="handleShowProduct" type="view" />
+            <ActionButton title="Visualizza" :action="() => handleShowProduct(item)" type="view" />
 
         </div>
 
@@ -23,6 +23,7 @@
 import { useFetch } from '@vueuse/core'
 import ActionButton from '../ActionButton.vue'
 import { useToast } from "vue-toastification";
+import { useRouter } from 'vue-router';
 
 interface Product {
     id: string
@@ -32,11 +33,15 @@ interface Product {
 
 const props = defineProps<{ item: Product }>()
 
+const apiUrl = import.meta.env.VITE_API_URL
+
+
 const toast = useToast();
+
+const router = useRouter()
 
 
 const handleRemove = async () => {
-    const apiUrl = import.meta.env.VITE_API_URL
 
     const { error } = await useFetch(`${apiUrl}/objects/${props.item.id}`, {
         method: 'DELETE',
@@ -48,6 +53,14 @@ const handleRemove = async () => {
         toast.success("Prodotto eliminato correttamente")
     }
 }
+
+const handleShowProduct = async (item: any) => {
+    await useFetch(`${apiUrl}/objects/${item.id}`).json()
+    router.push({ name: 'ProductDetail', params: { id: item.id } })
+
+}
+
+
 </script>
 
 <style scoped>
